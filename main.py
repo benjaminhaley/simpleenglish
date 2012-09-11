@@ -38,8 +38,8 @@ def render(counts):
 
 class MainPage(webapp.RequestHandler):
   def get(self):
-    self.response.out.write('<html>')
-    self.response.out.write("""
+    self.response.out.write("""<!DOCTYPE html>
+        <html>
         <head>
             <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
         </head>
@@ -47,17 +47,29 @@ class MainPage(webapp.RequestHandler):
     self.response.out.write('<body><div class="container">')
     self.response.out.write("""
         <h1>Simple English</h1>
-        <FONT COLOR="1B2940">
-        Find words that are <FONT COLOR="6CA4FF">rare</FONT> or <FONT
-        COLOR="6194E5">uncommon</FONT> based on text sampled from the <a
-        href='http://simple.wikipedia.org/wiki/Main_Page'>Simple English
-        Wikipedia</a>.  
-        <br/>by <a href='http://benjaminhaley.blogspot.com/'>ben
-        haley</a>
-        </FONT>
-        <br/></br/>
+        <p class='lead'>
+            Find words that are <FONT COLOR="6CA4FF">rare</FONT> or <FONT
+            COLOR="6194E5">uncommon</FONT> based on text sampled from the <a
+            href='http://simple.wikipedia.org/wiki/Main_Page'>simple english
+            wikipedia</a>.
+        </p>
+        <p>
+            <small>
+            2012 benjamin.haley@gmail.com
+            <a href='http://benjaminhaley.blogspot.com/2012/09/simple-english.html'>read
+            more</a> or <a
+            href='https://github.com/benjaminhaley/simpleenglish'>get the code</a>
+            </small>
+        </p>
+        <hr>
+
+    """)
+    self.response.out.write("""
+       <br/></br/>
         <form action="" method="post">
-            <div><textarea name="content" rows="10" class="span10"></textarea></div>
+            <div>
+                <textarea name="content" rows="10" class="span10">Your text here...</textarea>
+            </div>
             <div><input class='btn btn-primary' type="submit" value="Highlight Uncommon Words"></div>
         </form>
     """)
