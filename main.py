@@ -45,36 +45,40 @@ class MainPage(webapp.RequestHandler):
         </head>
     """)
     self.response.out.write('<body><div class="container">')
+
+    # A description
     self.response.out.write("""
-        <h1>Simple English</h1>
+        <h1><a href='http://simpleenglishchecker.appspot.com/'>Simple English</h1></a>
         <p class='lead'>
-            Find words that are <FONT COLOR="6CA4FF">rare</FONT> or <FONT
-            COLOR="6194E5">uncommon</FONT> based on text sampled from the <a
-            href='http://simple.wikipedia.org/wiki/Main_Page'>simple english
-            wikipedia</a>.
-        </p>
-        <p>
+            Identify words that are <FONT COLOR="6CA4FF">rare</FONT> or <FONT
+            COLOR="6194E5">uncommon</FONT>.
+            <br/>
             <small>
-            2012 benjamin.haley@gmail.com
             <a href='http://benjaminhaley.blogspot.com/2012/09/simple-english.html'>read
             more</a> or <a
-            href='https://github.com/benjaminhaley/simpleenglish'>get the code</a>
+            href='https://github.com/benjaminhaley/simpleenglish'>get the
+            code</a> -
+            benjamin.haley@gmail.com
             </small>
         </p>
-        <hr>
-
     """)
+
+    # Social Media
+    self.response.out.write("")
+
+
+    # Content
     self.response.out.write("""
-       <br/></br/>
         <form action="" method="post">
             <div>
-                <textarea name="content" rows="10" class="span10">Your text here...</textarea>
+                <textarea name="content" rows="10" class="span12"
+                placeholder="Your text here...">%s</textarea>
             </div>
             <div><input class='btn btn-primary' type="submit" value="Highlight Uncommon Words"></div>
         </form>
-    """)
+    """ % self.request.get('content'))
     self.response.out.write(
-            '<div class="span9">'+
+            '<div class="hero-unit">'+
             render(counts(self.request.get('content'))) +
             '</div>'
     )
