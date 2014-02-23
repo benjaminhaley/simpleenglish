@@ -3,6 +3,7 @@
 import cgi
 
 from google.appengine.api import users
+from google.appengine.ext import ndb
 import webapp2
 
 import re, collections
@@ -34,6 +35,10 @@ def render(counts):
         html += ' '
     html += '</FONT>'
     return html
+
+class RequestModel(ndb.Model):
+    content = ndb.TextProperty()
+    created = ndb.DateTimeProperty(auto_now_add=True)
 
 class MainPage(webapp2.RequestHandler):
   def get(self):
@@ -82,6 +87,10 @@ class MainPage(webapp2.RequestHandler):
             '</div>'
     )
     self.response.out.write('</div/></body></html>')
+
+    # Save the request in case we want to see usage data
+    request_entity = RequestModel(content=self.request.get('content'))
+    request_entity.put()
 
   def post(self):
       self.get()
