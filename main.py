@@ -3,8 +3,7 @@
 import cgi
 
 from google.appengine.api import users
-from google.appengine.ext import webapp
-from google.appengine.ext.webapp.util import run_wsgi_app
+import webapp2
 
 import re, collections
 
@@ -36,7 +35,7 @@ def render(counts):
     html += '</FONT>'
     return html
 
-class MainPage(webapp.RequestHandler):
+class MainPage(webapp2.RequestHandler):
   def get(self):
     self.response.out.write("""<!DOCTYPE html>
         <html>
@@ -87,12 +86,5 @@ class MainPage(webapp.RequestHandler):
   def post(self):
       self.get()
 
-application = webapp.WSGIApplication(
-                                     [('/', MainPage)],
-                                     debug=True)
 
-def main():
-  run_wsgi_app(application)
-
-if __name__ == "__main__":
-  main()
+app = webapp2.WSGIApplication([('/', MainPage)])

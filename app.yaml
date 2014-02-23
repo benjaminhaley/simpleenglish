@@ -1,8 +1,9 @@
 application: simpleenglishchecker
 version: 1
 api_version: 1
-runtime: python
+runtime: python27
+threadsafe: true
 
 handlers:
 - url: .*
-  script: main.py
+  script: main.app
