@@ -27,9 +27,9 @@ def render(counts):
     html = '<FONT COLOR="1B2940">'
     for word, count in counts:
         if count == 1:
-            html += '<FONT COLOR="6CA4FF">'+word+'</FONT>'
+            html += '<FONT COLOR="FF8A00">'+word+'</FONT>'
         elif count < 30:
-            html += '<FONT COLOR="6194E5">'+word+'</FONT>'
+            html += '<FONT COLOR="B26100">'+word+'</FONT>'
         else:
             html += word
         html += ' '
@@ -50,8 +50,8 @@ class MainPage(webapp.RequestHandler):
     self.response.out.write("""
         <h1><a href='http://simpleenglishchecker.appspot.com/'>Simple English</h1></a>
         <p class='lead'>
-            Identify words that are <FONT COLOR="6CA4FF">rare</FONT> or <FONT
-            COLOR="6194E5">uncommon</FONT>.
+            Identify words that are <FONT COLOR="FF8A00">rare</FONT> or <FONT
+            COLOR="B26100">uncommon</FONT>.
             <br/>
             <small>
             <a href='http://benjaminhaley.blogspot.com/2012/09/simple-english.html'>read
